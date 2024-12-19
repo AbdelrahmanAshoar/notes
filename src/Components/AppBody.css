@@ -1,0 +1,66 @@
+h1{
+  color: #1976d2;
+  padding-bottom: 5px;
+  align-self: center;
+}
+h2{
+  color: #1976d2;
+  width: 200px;
+}
+.app-body {
+  background-color: rgb(44, 60, 111);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: calc(100vh);
+}
+.header {
+  padding: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.section {
+  padding-inline: 20px;
+}
+.section-header {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-body{
+  height: 450px;
+  margin-bottom: 38px;
+  overflow-y: auto;
+}
+
+
+/* For WebKit browsers */
+.section-body::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+.section-body::-webkit-scrollbar-track {
+  background: #d1d1d1;
+  /* border-radius: 10px; */
+}
+/* Handle */
+.section-body::-webkit-scrollbar-thumb {
+  background: rgb(8, 3, 99);
+  background: linear-gradient(
+    180deg,rgb(188, 121, 255) 6%,rgb(251, 0, 238) 100%
+  );
+  /* border-radius: 10px; */
+}
+/* Handle on hover */
+.section-body::-webkit-scrollbar-thumb:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,rgb(162, 104, 219) 6%,rgb(194, 0, 185) 100%
+  );}
+
+ .MuiToggleButtonGroup-groupedHorizontal {
+  color:rgb(155, 155, 155);
+}
+

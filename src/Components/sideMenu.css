@@ -1,0 +1,51 @@
+.sideMenu {
+  padding-bottom: 20px;
+  width: 280px;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+li {
+  list-style: none;
+  width: 100%;
+  padding: 10px;
+  margin-block: 10px;
+}
+
+/* --------------- */
+.sideMenu nav a {
+  border-radius: 10px;
+  display: block;
+  font-weight: bold;
+  margin: 0 10px;
+  text-decoration: none;
+  color: lightgray;
+}
+nav a.active {
+  color: #1976d2;
+  background-color: #b6d4f1;
+}
+nav a:hover {
+  color: #1976d2;
+  background-color: #b6d4f1;
+}
+/* ------ */
+
+
+nav {
+  height: 400px;
+  box-sizing: content-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+nav::-webkit-scrollbar {
+  width: 3px;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+}
