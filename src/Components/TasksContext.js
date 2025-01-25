@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuId } from "uuid";
 
 const TasksContext = createContext();
-
 export const useTask = () => useContext(TasksContext);
 
 const loadFormLoacalStorage = () => {

@@ -3,5 +3,5 @@ import "./AppBody.css";
 import { Box } from "./UIComponent";
 
 export default function Home() {
-  return <Box></Box>;
+  return <div className="home"><div></div></div>;
 }

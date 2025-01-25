@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useTask } from "./TasksContext";
+import { useAlert } from "./AlertProvider";
 import EditTaskPopup, { BootstrapDialog } from "./EditTaskPopup";
 import {
   Box,
@@ -21,6 +22,7 @@ import {
 export default function Task({ task, sectionColor }) {
   const [open, setOpen] = React.useState(false);
   const { deleteTask, toggelDone } = useTask();
+  const { handleClick } = useAlert();
 
   return (
     <Box sx={{ m: 2, px: "auto", maxWidth: 800 }}>
@@ -56,12 +58,15 @@ export default function Task({ task, sectionColor }) {
               color="success"
               sx={{
                 border: "1px solid",
-                bgcolor: task.done ? "green" : "",
-                "&:hover": { bgcolor: task.done ? "green" : "" },
+                bgcolor: task.done ? "#3a3" : "",
+                "&:hover": { bgcolor: task.done ? "#3a3" : "" },
               }}
               aria-label="done"
               size="small"
-              onClick={() => toggelDone(task.id)}
+              onClick={() => {
+                 toggelDone(task.id);
+                if (!task.done) handleClick();
+              }}
             >
               <DoneIcon />
             </IconButton>
