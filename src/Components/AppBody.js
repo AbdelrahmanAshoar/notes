@@ -28,7 +28,7 @@ export default function AppBody() {
 
           <Box sx={{ borderRadius: "15px", m: 1, bgcolor: "white" }}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/notes" element={<Home />} />
               <Route path="/:sectionId" element={<Section />} />
               <Route path="*" element={<Home />} />
             </Routes>

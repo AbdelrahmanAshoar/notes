@@ -40,11 +40,12 @@ export default function Section() {
       return s.id === +sectionId;
     });
   }, [sections, sectionId]);
+
   const allTasks = useMemo(() => {
     return tasks.filter((task) => {
       return task.section === section.title;
     });
-  }, [tasks, section]); 
+  }, [tasks, section]);
   const doneTasks = useMemo(() => {
     return allTasks.filter((task) => {
       return task.done;
