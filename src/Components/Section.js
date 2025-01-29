@@ -17,9 +17,9 @@ import {
   ToggleButtonGroup,
 } from "./UIComponent";
 
-import { DeleteIcon, AddIcon } from "./icons";
+import { AddIcon } from "./icons";
 
-export default function Section() {
+export default function Section({isLargeScreen}) {
   const { sections, deleteSection, setColorSection } = useSection();
   const { sectionId } = useParams();
   const navigate = useNavigate();
@@ -72,7 +72,9 @@ export default function Section() {
       <div className="section-header">
         <h2>{section.title}</h2>
         <ToggleButtonGroup
+          className="btn-group"
           color="success"
+          size="small"
           value={alignment}
           exclusive
           onChange={handleChange}
@@ -85,9 +87,9 @@ export default function Section() {
           <ToggleButton value="todo">To-Do</ToggleButton>
         </ToggleButtonGroup>
         <Button
-          variant="contained"
+          variant="text"
+          size="small"
           color="error"
-          startIcon={<DeleteIcon />}
           onClick={() => {
             deleteSection(section.id);
             navigate("/");
@@ -99,7 +101,7 @@ export default function Section() {
 
       <Box className="section-body" sx={{ my: 1 }}>
         {TasksList(alignment).map((task) => (
-          <Task key={task.id} task={task} sectionColor={section.color} />
+          <Task key={task.id} task={task} sectionColor={section.color} isLargeScreen={isLargeScreen}/>
         ))}
 
         <Fab

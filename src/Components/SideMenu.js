@@ -1,9 +1,9 @@
 import "./sideMenu.css";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import { useSection } from "./sectionsContext";
 
+import { ArrowUpwardIcon, DeleteIcon } from "./icons";
 import {
   Button,
   IconButton,
@@ -11,15 +11,13 @@ import {
   InputAdornment,
   InputLabel,
   FilledInput,
-  useTheme,
 } from "./UIComponent";
-
-import { ArrowUpwardIcon, DeleteIcon } from "./icons";
 
 export default function SideMenu() {
   const { sections, addSection, clearAllLocalStorage } = useSection();
   const [sectionInput, setSectionInput] = useState("");
   const navigate = useNavigate();
+  
   const handleAddSection = () => {
     addSection(sectionInput, sections.length);
   };
@@ -62,7 +60,7 @@ export default function SideMenu() {
           />
         </FormControl>
         <Button
-          variant="outlined"
+          variant="contained"
           color="error"
           sx={{ ml: 2, my: 2 }}
           startIcon={<DeleteIcon />}

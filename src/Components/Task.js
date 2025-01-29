@@ -19,14 +19,14 @@ import {
   ExpandMoreIcon,
 } from "./icons";
 
-export default function Task({ task, sectionColor }) {
+export default function Task({ task, sectionColor, isLargeScreen }) {
   const [open, setOpen] = React.useState(false);
   const { deleteTask, toggelDone } = useTask();
   const { handleClick } = useAlert();
-
+  console.log(isLargeScreen)
   return (
-    <Box sx={{ m: 2, px: "auto", maxWidth: 800 }}>
-      <Accordion sx={{ bgcolor: sectionColor }}>
+    <Box sx={{ m: 2, mx: "auto", px: "auto", width:isLargeScreen?"70%":"85%"}}>
+      <Accordion sx={{ bgcolor: sectionColor}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -43,16 +43,16 @@ export default function Task({ task, sectionColor }) {
                 setOpen(true);
               }}
             >
-              <EditOutlinedIcon />
+              <EditOutlinedIcon fontSize="14px"/>
             </IconButton>
             <IconButton
               color="error"
-              sx={{ border: "1px solid", mx: 2 }}
+              sx={{ border: "1px solid", mx: 1 }}
               aria-label="delete"
               size="small"
               onClick={() => deleteTask(task.id)}
             >
-              <DeleteOutlineIcon />
+              <DeleteOutlineIcon fontSize="14px"/>
             </IconButton>
             <IconButton
               color="success"
@@ -68,7 +68,7 @@ export default function Task({ task, sectionColor }) {
                 if (!task.done) handleClick();
               }}
             >
-              <DoneIcon />
+              <DoneIcon fontSize="14px"/>
             </IconButton>
           </Box>
         </AccordionSummary>

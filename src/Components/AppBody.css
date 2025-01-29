@@ -5,39 +5,37 @@ h1 {
 }
 h2 {
   color: #1976d2;
-  width: 200px;
-}
-.app-body {
-  background-color: rgb(44, 60, 111);
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  height: calc(100vh);
-
+  width: 180px;
 }
 .header {
+  width: 280px;
   padding: 16px;
   display: flex;
   gap: 10px;
 }
-.home{
-  background: url("../logo1.png") no-repeat 50% 20%  ;
+
+.home {
+  background: url("../logo2.png") no-repeat 50% 30%;
   background-size: 80%;
+  filter: opacity(0.3);
   width: 100%;
-  height: 100%;
-  div{
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, .7);
-  }
+  height: 640px;
 }
+
+.app-body {
+  display: grid;
+  grid-template-columns: 250px auto;
+  gap: 20px;
+}
+
 .section {
-  padding-inline: 20px;
+  padding-inline: 16px;
+  height: 640px;
 }
 .section-header {
-  padding: 20px 10px;
-  display: flex;
+  padding: 20px 0px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   justify-content: space-between;
   align-items: center;
 }
@@ -47,33 +45,60 @@ h2 {
   overflow-y: auto;
 }
 
+@media screen and (max-width: 849px) {
+  .header {
+    width: 100%;
+    padding: 8px;
+  }
+  .app-body {
+    grid-template-columns: auto;
+  }
+  .section-container {
+    translate: 0 0;
+  }
+  .section,
+  .home {
+    padding-inline: 8px;
+    height: 560px;
+  }
+
+  .section-header {
+    grid-template-columns: repeat(2, auto);
+    row-gap: 15px;
+    padding: 0;
+    padding-top: 5px;
+    & .btn-group {
+      grid-column: span 2;
+      margin-inline: auto;
+      order: 3;
+    }
+  }
+  .section-body{
+    margin-bottom: 0;
+  }
+  
+}
+
 /* For WebKit browsers */
 .section-body::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+@media screen and (max-width: 570px) {
+  .section-body::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 /* Track */
 .section-body::-webkit-scrollbar-track {
-  background: #d1d1d1;
+  background: #e1d3e8;
 }
 /* Handle */
 .section-body::-webkit-scrollbar-thumb {
   background: rgb(8, 3, 99);
-  background: linear-gradient(
-    180deg,
-    rgb(188, 121, 255) 6%,
-    rgb(251, 0, 238) 100%
-  );
+  background: linear-gradient(180deg, #bc79ff 6%, #fb00ee 100%);
 }
 /* Handle on hover */
 .section-body::-webkit-scrollbar-thumb:hover {
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    180deg,
-    rgb(162, 104, 219) 6%,
-    rgb(194, 0, 185) 100%
-  );
-}
-
-.MuiToggleButtonGroup-groupedHorizontal {
-  color: rgb(155, 155, 155);
+  background: linear-gradient(180deg, #a268db 6%, #c200b9 100%);
 }
