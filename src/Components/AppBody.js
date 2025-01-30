@@ -8,10 +8,12 @@ import { Home, SideMenu, Section } from "./resources";
 import { Box, Button } from "./UIComponent";
 import Drawer from "@mui/material/Drawer";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import useWindowSize from "./windowSize";
 
 export default function AppBody() {
   const [open, setOpen] = React.useState(false);
   const isLargeScreen = useMediaQuery("(min-width:850px)");
+  const { width } = useWindowSize();
 
   const toggleDrawer = (open) => () => {
     setOpen(open);
@@ -20,7 +22,7 @@ export default function AppBody() {
   return (
     <Box sx={{ background: "#2c3c6f" }}>
       <Box className="header">
-        <img src={task} width={40} height={"40"} alt="" />
+        <img src={task} width={40} height={"40"} alt="task-image" />
         <h1>
           <Link to={"/"} className="Link-style">
             ToDoList
@@ -44,8 +46,8 @@ export default function AppBody() {
             "& .MuiDrawer-paper": {
               background: "#2c3c6f",
               border: "none",
-              height: "calc(100% - 99px)",
-              marginTop: "66px",
+              height: "calc(100vh - 99px)",
+              marginTop: "82px",
             },
           }}
           anchor="left"
@@ -53,13 +55,8 @@ export default function AppBody() {
           variant={isLargeScreen ? "persistent" : "temporary"}
           onClose={toggleDrawer(false)}
         >
-          <Box
-            sx={{ width: 250 }}
-            role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
-          >
-            <SideMenu />
+          <Box sx={{ height: "calc(100vh - 99px)", width: 250 }}>
+            <SideMenu toggleDrawer={toggleDrawer} />
           </Box>
         </Drawer>
 

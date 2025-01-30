@@ -23,7 +23,7 @@ export default function Task({ task, sectionColor, isLargeScreen }) {
   const [open, setOpen] = React.useState(false);
   const { deleteTask, toggelDone } = useTask();
   const { handleClick } = useAlert();
-  console.log(isLargeScreen)
+
   return (
     <Box sx={{ m: 2, mx: "auto", px: "auto", width:isLargeScreen?"70%":"85%"}}>
       <Accordion sx={{ bgcolor: sectionColor}}>

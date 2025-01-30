@@ -13,18 +13,18 @@ import {
   FilledInput,
 } from "./UIComponent";
 
-export default function SideMenu() {
+export default function SideMenu({toggleDrawer}) {
   const { sections, addSection, clearAllLocalStorage } = useSection();
   const [sectionInput, setSectionInput] = useState("");
   const navigate = useNavigate();
-  
+
   const handleAddSection = () => {
     addSection(sectionInput, sections.length);
   };
 
   const sectionsList = sections.map((section) => {
     return (
-      <NavLink key={section.id} to={`${section.id}`}>
+      <NavLink key={section.id} to={`${section.id}`} onClick={toggleDrawer(false)}>
         <li>{section.title}</li>
       </NavLink>
     );
@@ -32,7 +32,7 @@ export default function SideMenu() {
 
   return (
     <div className="sideMenu">
-      <nav style={{ width: "100%" }}>{sectionsList}</nav>
+      <nav style={{ width: "100%" }} >{sectionsList}</nav>
 
       <div>
         <FormControl sx={{ m: 1, width: "25ch", mb: 2 }} variant="filled">
