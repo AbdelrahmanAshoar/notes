@@ -2,6 +2,7 @@ import "./sideMenu.css";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSection } from "./sectionsContext";
+import { useTask } from "./TasksContext";
 
 import { ArrowUpwardIcon, DeleteIcon } from "./icons";
 import {
@@ -15,6 +16,7 @@ import {
 
 export default function SideMenu({toggleDrawer}) {
   const { sections, addSection, clearAllLocalStorage } = useSection();
+  const { deleteAllTasks } = useTask();
   const [sectionInput, setSectionInput] = useState("");
   const navigate = useNavigate();
 
@@ -65,6 +67,7 @@ export default function SideMenu({toggleDrawer}) {
           sx={{ ml: 2, my: 2 }}
           startIcon={<DeleteIcon />}
           onClick={() => {
+            deleteAllTasks(undefined);
             clearAllLocalStorage();
             navigate("/");
           }}

@@ -2,18 +2,16 @@ import * as React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import "./AppBody.css";
-import task from "../tasks.png";
+import task from "../note.png";
 
 import { Home, SideMenu, Section } from "./resources";
 import { Box, Button } from "./UIComponent";
 import Drawer from "@mui/material/Drawer";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import useWindowSize from "./windowSize";
 
 export default function AppBody() {
   const [open, setOpen] = React.useState(false);
   const isLargeScreen = useMediaQuery("(min-width:850px)");
-  const { width } = useWindowSize();
 
   const toggleDrawer = (open) => () => {
     setOpen(open);
@@ -47,7 +45,7 @@ export default function AppBody() {
               background: "#2c3c6f",
               border: "none",
               height: "calc(100vh - 99px)",
-              marginTop: "82px",
+              marginTop: "88px",
             },
           }}
           anchor="left"

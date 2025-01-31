@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuId } from "uuid";
-
+import { useSection } from "./sectionsContext"; //for deleting all task of a section when delete it
 const TasksContext = createContext();
 export const useTask = () => useContext(TasksContext);
 
@@ -11,10 +11,11 @@ const loadFormLoacalStorage = () => {
 
 export default function TasksProvider({ children }) {
   const [tasks, setTasks] = useState(loadFormLoacalStorage);
+  const { sections } = useSection();
 
-  useEffect(() =>{
+  useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  }, [tasks, sections]);
 
   const addTask = (taskInput, section) => {
     setTasks([
@@ -33,6 +34,14 @@ export default function TasksProvider({ children }) {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const deleteAllTasks = (sectionTitle = undefined) => {
+    if (sectionTitle) {
+      setTasks(tasks.filter((task) => task.section !== sectionTitle));
+      return;
+    }
+    setTasks([]);
+  };
+
   const updateTask = (taskInput, id) => {
     setTasks(
       tasks.map((task) => {
@@ -48,8 +57,8 @@ export default function TasksProvider({ children }) {
   };
 
   const getTask = (id) => {
-    tasks.filter((task) => task.id === id)
-  }
+    tasks.filter((task) => task.id === id);
+  };
 
   const toggelDone = (id) => {
     setTasks(
@@ -61,7 +70,15 @@ export default function TasksProvider({ children }) {
     );
   };
 
-  const value = { tasks, addTask, deleteTask, updateTask, toggelDone, getTask };
+  const value = {
+    tasks,
+    addTask,
+    deleteTask,
+    deleteAllTasks,
+    updateTask,
+    toggelDone,
+    getTask,
+  };
 
   return (
     <TasksContext.Provider value={value}>{children}</TasksContext.Provider>

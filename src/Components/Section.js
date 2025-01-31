@@ -25,7 +25,7 @@ export default function Section({isLargeScreen}) {
   const navigate = useNavigate();
   const [alignment, setAlignment] = useState("all");
   const [open, setOpen] = useState(false);
-  const { tasks } = useTask();
+  const { tasks, deleteAllTasks } = useTask();
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -91,6 +91,7 @@ export default function Section({isLargeScreen}) {
           size="small"
           color="error"
           onClick={() => {
+            deleteAllTasks(section.title);
             deleteSection(section.id);
             navigate("/");
           }}
