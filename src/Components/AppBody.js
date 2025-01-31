@@ -45,7 +45,7 @@ export default function AppBody() {
               background: "#2c3c6f",
               border: "none",
               height: "calc(100vh - 99px)",
-              marginTop: "88px",
+              marginTop: "82px",
             },
           }}
           anchor="left"
@@ -66,7 +66,7 @@ export default function AppBody() {
             borderRadius: "15px",
             m: 1,
             bgcolor: "white",
-            translate: "0 -77px",
+            translate: "0 -75px",
           }}
         >
           <Routes>

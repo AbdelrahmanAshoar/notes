@@ -44,7 +44,7 @@ h2 {
   overflow-y: auto;
 }
 
-@media screen and (max-width: 849px) {
+@media screen and (min-width: 200px) and (max-width: 849px){
   .header {
     width: 100%;
   }
@@ -64,11 +64,12 @@ h2 {
     row-gap: 15px;
     padding: 0;
     padding-top: 5px;
-    & .btn-group {
-      grid-column: span 2;
-      margin-inline: auto;
-      order: 3;
-    }
+    
+  }
+  .section-header .btn-group {
+    order: 3;
+    grid-column: span 2;
+    margin-inline: auto;
   }
 }
 

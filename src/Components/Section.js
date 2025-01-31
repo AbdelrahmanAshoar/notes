@@ -19,7 +19,7 @@ import {
 
 import { AddIcon } from "./icons";
 
-export default function Section({isLargeScreen}) {
+export default function Section({ isLargeScreen }) {
   const { sections, deleteSection, setColorSection } = useSection();
   const { sectionId } = useParams();
   const navigate = useNavigate();
@@ -71,21 +71,22 @@ export default function Section({isLargeScreen}) {
     <div className="section">
       <div className="section-header">
         <h2>{section.title}</h2>
-        <ToggleButtonGroup
-          className="btn-group"
-          color="success"
-          size="small"
-          value={alignment}
-          exclusive
-          onChange={handleChange}
-          aria-label="Platform"
-        >
-          <ToggleButton value="all" sx={{ color: "red" }}>
-            All
-          </ToggleButton>
-          <ToggleButton value="done">Done</ToggleButton>
-          <ToggleButton value="todo">To-Do</ToggleButton>
-        </ToggleButtonGroup>
+        <Box className="btn-group">
+          <ToggleButtonGroup
+            color="success"
+            size="small"
+            value={alignment}
+            exclusive
+            onChange={handleChange}
+            aria-label="Platform"
+          >
+            <ToggleButton value="all" sx={{ color: "red" }}>
+              All
+            </ToggleButton>
+            <ToggleButton value="done">Done</ToggleButton>
+            <ToggleButton value="todo">To-Do</ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
         <Button
           variant="text"
           size="small"
@@ -102,7 +103,12 @@ export default function Section({isLargeScreen}) {
 
       <Box className="section-body" sx={{ my: 1 }}>
         {TasksList(alignment).map((task) => (
-          <Task key={task.id} task={task} sectionColor={section.color} isLargeScreen={isLargeScreen}/>
+          <Task
+            key={task.id}
+            task={task}
+            sectionColor={section.color}
+            isLargeScreen={isLargeScreen}
+          />
         ))}
 
         <Fab
